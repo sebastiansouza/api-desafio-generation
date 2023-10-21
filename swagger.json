@@ -1,0 +1,177 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API DESAFIO GENERATION",
+        "description": "API do desafio da Generation",
+        "contact": {
+            "name": "Responsável",
+            "email": "sebastian.asouzasp@gmail.com"
+        },
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/alunos": {
+            "post": {
+                "description": "Cadastrando um aluno",
+                "requestBody": {
+                    "description": "Dados necessários para cadastrar o aluno",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#components/schemas/RequestAluno"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Aluno criado com sucesso"
+                    },
+                    "400": {
+                        "description": " Solicitação inválida"
+                    },
+                    "500": {
+                        "description": " Erro interno do servidor."
+                    }
+                }
+            },
+            "get": {
+                "description": "Alunos cadastrados",
+                "responses": {
+                    "201": {
+                        "description": "Lista de todos alunos"
+                    },
+                    "400": {
+                        "description": " Solicitação inválida"
+                    },
+                    "500": {
+                        "description": "Erro ao buscar alunos"
+                    }
+                }
+            }
+        },
+        "/alunos/{id}": {
+            "get": {
+                "description": "Buscar aluno por ID",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id do aluno",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Aluno encontrado"
+                    },
+                    "400": {
+                        "description": " Solicitação inválida"
+                    },
+                    "500": {
+                        "description": "Erro ao buscar aluno"
+                    }
+                }
+            },
+            "delete": {
+                "description": "Deleta aluno por ID",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "required": true,
+                        "description": "ID do aluno a ser excluído.",
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Aluno Deletado"
+                    },
+                    "400": {
+                        "description": " Solicitação inválida"
+                    },
+                    "500": {
+                        "description": "Erro ao buscar aluno"
+                    }
+                }
+            },
+            "put":{
+                "description": "Atualiza um aluno usando ID",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "required": true,
+                        "description": "ID do aluno a ser atualizado.",
+                        "type": "integer"
+                    }
+                ],
+                "requestBody": {
+                    "description": "Dados necessários para cadastrar o aluno",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#components/schemas/RequestAluno"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Aluno atualizado com sucesso."
+                    },
+                    "404":{
+                        "description" :"Aluno não encontrado"
+                    },
+                    "400": {
+                        "description": " Solicitação inválida"
+                    },
+                    "500": {
+                        "description": " Erro interno do servidor."
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "RequestAluno": {
+                "type": "object",
+                "properties": {
+                    "nome": {
+                        "type": "string",
+                        "description": "Nome do Aluno a ser cadastrado",
+                        "example": "Sebastian"
+                    },
+                    "idade": {
+                        "type": "integer",
+                        "description": "Idade do Aluno",
+                        "example": "29"
+                    },
+                    "nota_primeiro_semestre": {
+                        "type": "number",
+                        "description": "Nota do primeiro semestre do aluno",
+                        "example": "9.5"
+                    },
+                    "nota_segundo_semestre": {
+                        "type": "number",
+                        "description": "Nota do segundo semestre do aluno",
+                        "example": "6.5"
+                    },
+                    "nome_professor": {
+                        "type": "string",
+                        "description": "Nota do professor responsável",
+                        "example": "Carlos"
+                    },
+                    "numero_sala": {
+                        "type": "number",
+                        "description": "Número da sala de aula",
+                        "example": "101"
+                    }
+                }
+            }
+        }
+    }
+}

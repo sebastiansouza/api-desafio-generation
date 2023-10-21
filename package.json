@@ -1,0 +1,22 @@
+{
+  "name": "desafio-gn",
+  "version": "1.0.0",
+  "description": "API criada para concluir o desafio Generation",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run index.js"
+  },
+  
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "Sebastião Souza",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "nodemon": "^3.0.1",
+    "pg": "^8.11.3",
+    "swagger-ui-express": "^5.0.0"
+  }
+}
